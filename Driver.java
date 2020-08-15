@@ -28,24 +28,29 @@ public class Driver {
 			//Case where the user wants to create a password
 			case "Create":
 				
-				System.out.println("Enter 'New' to type your own password, or 'Genereate' for a randomly generated password ");
+				System.out.println("Enter 'New' to type your own password, or 'Generate' for a randomly generated password ");
 				
 				Scanner scanner = new Scanner(System.in);
 				
 				String pass = scanner.nextLine();
 				
 				//Case where the user wants to type their own password
-				if(pass == "New")
+				if(pass.equals("New"))
 				{
 					System.out.println("Type your password");
 					
 					String theP = scanner.nextLine();
 					
+					//Create a new password with the one the user chose
 					Password password = new Password(theP);
+					
+					//Ask and show the user if they are okay with their password, if yes then set the boolean to false
+					//otherwise loop again and keep again as true
+					again = false;
 					
 				}
 				//Case where the user wants to have a generated password with certain characteristics
-				else if(pass == "Generate")
+				else if(pass.equals("Generate"))
 				{
 					System.out.println("Do you want your password to contain Upper/Lower case letters, numbers, and/or symbols ");
 					System.out.println("Type Y for each option you want, and N to not include the option ");
@@ -80,8 +85,13 @@ public class Driver {
 					
 					Password password = new Password(up, low, num, sym);
 					
+					//Ask and show the user if they are okay with their password, if yes then set the boolean to false
+					//otherwise loop again and keep again as true
+					again = false;
+					
 				}
 				
+				scanner.close();
 				//Ask the user if they want to input their own password or if they want a generated one
 				//return the password to the user and see if they are content
 				//if so, ask for account details and open the password manager
