@@ -65,7 +65,7 @@ public class Password {
 		/*
 		 * if all characters in the password are lowercase returns true. Otherwise it returns false
 		 */
-		private boolean CheckLower() {
+		private boolean CheckAllLower() {
 			String copyPass = pass;
 			if(copyPass.toLowerCase().equals(pass)) {
 				return true;
@@ -77,7 +77,7 @@ public class Password {
 		/*
 		 * if all characters in the password are uppercase returns true. Otherwise it returns false
 		 */
-		private boolean CheckUpper() {
+		private boolean CheckAllUpper() {
 			String copyPass = pass;
 			if(copyPass.toUpperCase().equals(pass)) {
 				return true;
@@ -86,12 +86,63 @@ public class Password {
 			}
 		}
 		
-		private void CheckNumbers() {
+		/*
+		 * if all characters in the password are numbers return true. Otherwise it returns false
+		 */
+		private boolean CheckAllNumbers() {
+			String copyPass = pass;
+			if ((copyPass == null) || (copyPass.length() == 0)) {
+				//if the password doesn't exist currently or the length is zero
+				return false;
+			}
 			
+			for(int i = 0; i < copyPass.length(); i++) {
+				char c = copyPass.charAt(i);
+				if(c < '0' || c > '9') {
+					//if the character doesn't fall within the ascii values of 0 to 9 then we return false
+					//since the password is not all numbers
+					return false;
+				}
+			}
+			//when we hit here the password is all numbers
+			return true;
 		}
 		
-		private void CheckSymbols() {
+		/*
+		 * if all characters in the password are symbols return true. Otherwise it returns false
+		 */
+		private boolean CheckSymbols() {
+			String copyPass = pass;
+			if ((copyPass == null) || (copyPass.length() == 0)) {
+				//if the password doesn't exist currently or the length is zero
+				return false;
+			}
 			
+			for(int i = 0; i < copyPass.length(); i++) {
+				char c = copyPass.charAt(i);
+				if(c < ' ') {
+					//if the ascii value is less than [space] we return false
+					return false;
+				} else if (c > '/' || c < ':') {
+					//if the ascii value falls within these characters then it is a number therefore we return false
+					return false;
+				} else if (c > '@' || c < '[') {
+					//if ascii value falls within these characters then it is a capital letter so we return false
+					return false;
+				} else if (c > '`' || c < '{') {
+					//if ascii values fall within here then the character is a lowercase letter so we return false
+					return false;
+				} else if (c > '~') {
+					//if it is greater than ~ then it is out of range
+					return false;
+				}
+			}
+			//when we hit here the password is all symbols
+			return true;
+		}
+		
+		private int CheckRepeatedCharacters() {
+			return 0;
 		}
 		
 		private void CheckWords() {
