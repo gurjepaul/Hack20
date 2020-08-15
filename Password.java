@@ -1,4 +1,3 @@
-
 public class Password {
 		private String pass;
 		private double strength;
@@ -6,7 +5,7 @@ public class Password {
 		/*
 		 * no argument constructor
 		 */
-		public Password() {
+		public Password(boolean up, boolean low, boolean num, boolean sym) {
 			//call generatePassword();
 			//check the strength of password
 		}
