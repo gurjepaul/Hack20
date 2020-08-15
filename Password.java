@@ -62,12 +62,28 @@ public class Password {
 			this.strength = strValue;
 		}
 		
-		private void CheckLower() {
-			
+		/*
+		 * if all characters in the password are lowercase returns true. Otherwise it returns false
+		 */
+		private boolean CheckLower() {
+			String copyPass = pass;
+			if(copyPass.toLowerCase().equals(pass)) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 		
-		private void CheckUpper() {
-			
+		/*
+		 * if all characters in the password are uppercase returns true. Otherwise it returns false
+		 */
+		private boolean CheckUpper() {
+			String copyPass = pass;
+			if(copyPass.toUpperCase().equals(pass)) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 		
 		private void CheckNumbers() {
