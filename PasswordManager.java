@@ -5,9 +5,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 /**
- * 
+ * This class contains the implementation for the password manager
  */
-
 /**
  * @author Gurjepaul
  *
@@ -57,15 +56,15 @@ public class PasswordManager
 		return (this.toHexString(this.getSHA(key))).equals(this.masterKey);
 	}
 	
-	public boolean addPassword(String account, String password)
+	public boolean addPassword(String key, String account, String password) throws NoSuchAlgorithmException
 	{
 		// Check if container contains the account
-		if (container.containsKey(account))
+		if ((container.containsKey(account)) || !(this.toHexString(this.getSHA(key)).equals(this.masterKey)))
 		{
 			return false;
 		}
-		
-		String encrypted = AES.encrypt(password, this.masterKey);
+		// Encrypting data using AES
+		String encrypted = AES.encrypt(password, key);
 		
 		// Adding new account and password to HashMap
 		container.put(account, encrypted);
@@ -73,15 +72,15 @@ public class PasswordManager
 		return true;
 	}
 	
-	public boolean updatePassword(String account, String password)
+	public boolean updatePassword(String key, String account, String password) throws NoSuchAlgorithmException
 	{
 		// Check if container doesn't contain the account
-		if (!container.containsKey(account))
+		if (!(container.containsKey(account)) || !(this.toHexString(this.getSHA(key)).equals(this.masterKey)))
 		{
 			return false;
 		}
-		
-		String encrypted = AES.encrypt(password, this.masterKey);
+		// Encrypting data using AES
+		String encrypted = AES.encrypt(password, key);
 		
 		// Updates the password of the account in the HashMap
 		container.replace(account, encrypted);
@@ -89,15 +88,15 @@ public class PasswordManager
 		return true;
 	}
 	
-	public String retrievePassword(String account)
+	public String retrievePassword(String key, String account) throws NoSuchAlgorithmException
 	{
 		// Check if container doens't contain the account
-		if (!container.containsKey(account))
+		if (!(container.containsKey(account)) || !(this.toHexString(this.getSHA(key)).equals(this.masterKey)))
 		{
 			return null;
 		}
-		
-		String decrypted = AES.decrypt((String)container.get(account), this.masterKey);
+		// Decrypting data using AES
+		String decrypted = AES.decrypt((String)container.get(account), key);
 		
 		// Return the password of the account
 		return decrypted;
@@ -142,23 +141,23 @@ public class PasswordManager
 //		System.out.println(pm.isMasterKey("Saahil"));
 //		System.out.println(pm.isMasterKey("Jay"));
 //		
-//		System.out.println(pm.addPassword("Google", "123456"));
-//		System.out.println(pm.addPassword("Google", "jay"));
+//		System.out.println(pm.addPassword("Jay", "Google", "123456"));
+//		System.out.println(pm.addPassword("Jay", "Google", "jay"));
 //		
-//		System.out.println(pm.updatePassword("Google", "jay"));
+//		System.out.println(pm.updatePassword("Jay", "Google", "jay"));
 //		
-//		System.out.println(pm.updatePassword("Spotify", "jay"));
+//		System.out.println(pm.updatePassword("Jay", "Spotify", "jay"));
 //		
-//		System.out.println(pm.addPassword("Microsoft", "566969"));
-//		System.out.println(pm.addPassword("Apple", "Password"));
-//		System.out.println(pm.addPassword("Steam", "Password"));
+//		System.out.println(pm.addPassword("Jay", "Microsoft", "566969"));
+//		System.out.println(pm.addPassword("Jay", "Apple", "Password"));
+//		System.out.println(pm.addPassword("Jay", "Steam", "Password"));
 //		
 //		System.out.println(pm.removePassword("Spotify"));
 //		System.out.println(pm.removePassword("Google"));
 //		
-//		System.out.println(pm.retrievePassword("Google"));
-//		System.out.println(pm.retrievePassword("Microsoft"));
-//		System.out.println(pm.retrievePassword("Apple"));
+//		System.out.println(pm.retrievePassword("Jay", "Google"));
+//		System.out.println(pm.retrievePassword("Jay", "Microsoft"));
+//		System.out.println(pm.retrievePassword("Jay", "Apple"));
 //		
 //		System.out.println(pm.toString());
 	}
