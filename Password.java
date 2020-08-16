@@ -172,10 +172,6 @@ public class Password {
 			}
 
 			int repeated = CheckRepeatedCharacters();
-			if(repeated == 0) {
-				//so we don't accidentally divide by zero
-				repeated = 1;
-			}
 			
 			int length = pass.length();
 			
@@ -283,8 +279,8 @@ public class Password {
 		 * returns an integer with the length of the most amount of characters that are repeated in the password
 		 */
 		private int CheckRepeatedCharacters() {
-			int maxRepeated = 0;
-			int currentRepeated = 0;
+			int maxRepeated = 1;
+			int currentRepeated = 1;
 			
 			
 			for(int i = 0; i < pass.length(); i++) {
@@ -299,8 +295,10 @@ public class Password {
 						currentRepeated+= 1;
 						//increment j
 						j++;
+					} 
+					else {
+						break;
 					}
-					break;
 				}
 				
 				//After we finish up with the while loop to figure out how many repeated characters there are
@@ -310,7 +308,7 @@ public class Password {
 				//find out if it is the most amount of repeated characters
 				if (currentRepeated > maxRepeated) {
 					maxRepeated = currentRepeated;
-					currentRepeated = 0;
+					currentRepeated = 1;
 				}
 				//we go back up and iterate here
 			}
