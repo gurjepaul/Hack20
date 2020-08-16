@@ -5,7 +5,7 @@ public class Password {
 		
 		public static void main(String[] args) {
 			System.out.println("hello world");
-			Password wtf = new Password("hI");
+			Password wtf = new Password("hello24");
 			System.out.println(wtf.getStrength());
 		}
 		
@@ -197,7 +197,11 @@ public class Password {
 		private boolean CheckAllLower() {
 			String copyPass = pass;
 			if(copyPass.toLowerCase().equals(pass)) {
+				if(this.ContainsNumber() || this.ContainsSpecial()) {
+					return false;
+				} else {
 				return true;
+				}
 			} else {
 				return false;
 			}
@@ -209,7 +213,11 @@ public class Password {
 		private boolean CheckAllUpper() {
 			String copyPass = pass;
 			if(copyPass.toUpperCase().equals(pass)) {
+				if(this.ContainsNumber() || this.ContainsSpecial()) {
+					return false;
+				} else {
 				return true;
+				}
 			} else {
 				return false;
 			}
