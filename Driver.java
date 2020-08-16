@@ -126,17 +126,17 @@ public class Driver {
 			//Case where the user wants to update a password
 			case "Add":
 				System.out.println("Enter your master key");
-				if(@@@@@@@@@@@@.isMasterKey(scan.nextLine())) {
+				if(pm.isMasterKey(scan.nextLine())) {
 					System.out.println("Enter the account you would like to update");
 					String account = scan.nextLine();
 					System.out.println("Enter the  password");
 					String storePass = scan.nextLine();
 					
 					System.out.println("Enter your master key again");
-					if(@@@@@@.addPassword(scan.nextLine(), account, storePass)) {
+					if(pm.addPassword(scan.nextLine(), account, storePass)) {
 						System.out.println("Account: " + account + " sucessfully added to manager");
 					} else {
-						Systen.out.println("Error in adding account to manager");
+						System.out.println("Error in adding account to manager");
 					}
 				} else {
 					System.out.println("Invalid Master key");
@@ -145,7 +145,7 @@ public class Driver {
 				
 				System.out.println("Would you like to continue to use the password manager? (Y/N)");
 				char repeat = scan.next().toUpperCase().charAt(0);
-				if (repeat = 'N') {
+				if (repeat == 'N') {
 					again = false;
 				}
 				
@@ -153,15 +153,15 @@ public class Driver {
 				
 			case "View":	
 				System.out.println("Enter your master key");
-				if(@@@@@@@@@@@@.isMasterKey(scan.nextLine())) {
-					@@@@@@@@@@@@.toString();
+				if(pm.isMasterKey(scan.nextLine())) {
+					pm.toString();
 				} else {
 					System.out.println("Invalid Master key");
 				}
 				
 				System.out.println("Would you like to continue to use the password manager? (Y/N)");
 				char repeat = scan.next().toUpperCase().charAt(0);
-				if (repeat = 'N') {
+				if (repeat == 'N') {
 					again = false;
 				}
 				
@@ -171,14 +171,14 @@ public class Driver {
 			case "Update":
 			
 				System.out.println("Enter your master key");
-				if(@@@@@@@@@@@@.isMasterKey(scan.nextLine())) {
+				if(pm.isMasterKey(scan.nextLine())) {
 					System.out.println("Enter the account you would like to update");
 					String account = scan.nextLine();
 					System.out.println("Enter the new password");
 					String updatedPass = scan.nextLine();
 					
 					System.out.println("Enter your master key again");
-					if(@@@@@@@@@.updatePassword(scan.nextLine(), account, updatedPass)) {
+					if(pm.updatePassword(scan.nextLine(), account, updatedPass)) {
 						System.out.println("Account: " + account + " password was sucessfully updated");
 					} else {
 						System.out.println("Account: " + account + " not found");
@@ -192,7 +192,7 @@ public class Driver {
 				//returns whether the password is strong, weak ,or okay
 				System.out.println("Would you like to continue to use the password manager? (Y/N)");
 				char repeat = scan.next().toUpperCase().charAt(0);
-				if (repeat = 'N') {
+				if (repeat == 'N') {
 					again = false;
 				}
 				//ask the user if they want to do something else
@@ -204,11 +204,11 @@ public class Driver {
 			case "Delete":
 				
 				System.out.println("Enter your master key");
-				if(@@@@@@@@@@@@.isMasterKey(scan.nextLine())) {
+				if(pm.isMasterKey(scan.nextLine())) {
 					System.out.println("Enter the account you would like to delete");
 					String account = scan.nextLine();
 					
-					if(@@@@@@@@@@.removePassword(account)) {
+					if(pm.removePassword(account)) {
 						System.out.println("Account: " + account + " was sucessfully removed");
 					} else {
 						System.out.println("Account: " + account + " not found");
@@ -219,7 +219,7 @@ public class Driver {
 				
 				System.out.println("Would you like to continue to use the password manager? (Y/N)");
 				char repeat = scan.next().toUpperCase().charAt(0);
-				if (repeat = 'N') {
+				if (repeat == 'N') {
 					again = false;
 				}
 				//Go directly to password manager where we ask for the master key
@@ -235,12 +235,12 @@ public class Driver {
 			case "Retrieve":
 				System.out.println("Enter your master key");
 				
-				if(@@@@@@@@@@@@.isMasterKey(scan.nextLine())) {
+				if(pm.isMasterKey(scan.nextLine())) {
 					System.out.println("Enter the account you would like to retrieve");
 					String account = scan.nextLine();
 					
 					System.out.println("Enter your master key again");
-					String retrievedPass = retrievePassword(scan.nextLine(), account);
+					String retrievedPass = pm.retrievePassword(scan.nextLine(), account);
 					System.out.println("Password for account " + account + " is: " +retrievedPass);
 				} else {
 					System.out.println("Invalid master key");
@@ -252,7 +252,7 @@ public class Driver {
 				
 				System.out.println("Would you like to continue to use the password manager? (Y/N)");
 				char repeat = scan.next().toUpperCase().charAt(0);
-				if (repeat = 'N') {
+				if (repeat == 'N') {
 					again = false;
 				}
 				//ask the user if they want to do something else
