@@ -251,6 +251,22 @@ public class Password {
 			return 0;
 		}
 		
+		/*
+		 * returns true if the password contains an uppercase character and false if it doesn't
+		 */
+		private boolean ContainsLower() {
+			String copyPass = this.pass;
+			return !copyPass.equals(copyPass.toUpperCase());
+		}
+		
+		/*
+		 * returns true if the password contains a lowercase character and false if it doesn't
+		 */
+		private boolean ContainsUpper() {
+			String copyPass = this.pass;
+			return !copyPass.equals(copyPass.toLowerCase());
+		}
+		
 		private void CheckWords() {
 			
 		}
