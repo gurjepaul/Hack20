@@ -25,7 +25,7 @@ public class Password {
 		 */
 		public Password(boolean letters, boolean num, boolean sym, int length) {
 			
-			String password = generatePassword(letters, num, sym, length);
+			this.pass = generatePassword(letters, num, sym, length);
 			
 			CheckStrength();
 		}
@@ -34,11 +34,9 @@ public class Password {
 		 * constructor where user passes in value
 		 */
 		public Password(String pass) {
-			System.out.println("in here");
-			setPassword(pass);
-			System.out.println("next");
+			this.setPassword(pass);
+			
 			CheckStrength();
-			System.out.println("out");
 		}
 
 
