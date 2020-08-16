@@ -53,6 +53,13 @@ public class Driver {
 					System.out.println("------------------------------------");
 					System.out.println();
 					
+					System.out.println("Password Strength Chart");
+					System.out.println("Weak = 0 - 149");
+					System.out.println("Medium = 150 - 499");
+					System.out.println("Strong = 500+");
+					System.out.println("------------------------------------");
+					System.out.println();
+					
 					
 				}
 				//Case where the user wants to have a generated password with certain characteristics
@@ -105,6 +112,9 @@ public class Driver {
 					System.out.println();
 					
 					System.out.println("Password Strength Chart");
+					System.out.println("Weak = 0 - 149");
+					System.out.println("Medium = 150 - 499");
+					System.out.println("Strong = 500+");
 					System.out.println("------------------------------------");
 					System.out.println();
 					
@@ -114,6 +124,50 @@ public class Driver {
 				break;
 		
 			//Case where the user wants to update a password
+			case "Add":
+				System.out.println("Enter your master key");
+				if(@@@@@@@@@@@@.isMasterKey(scan.nextLine())) {
+					System.out.println("Enter the account you would like to update");
+					String account = scan.nextLine();
+					System.out.println("Enter the  password");
+					String storePass = scan.nextLine();
+					
+					System.out.println("Enter your master key again");
+					if(@@@@@@.addPassword(scan.nextLine(), account, storePass)) {
+						System.out.println("Account: " + account + " sucessfully added to manager");
+					} else {
+						Systen.out.println("Error in adding account to manager");
+					}
+				} else {
+					System.out.println("Invalid Master key");
+				}
+				
+				
+				System.out.println("Would you like to continue to use the password manager? (Y/N)");
+				char repeat = scan.next().toUpperCase().charAt(0);
+				if (repeat = 'N') {
+					again = false;
+				}
+				
+				break;
+				
+			case "View":	
+				System.out.println("Enter your master key");
+				if(@@@@@@@@@@@@.isMasterKey(scan.nextLine())) {
+					@@@@@@@@@@@@.toString();
+				} else {
+					System.out.println("Invalid Master key");
+				}
+				
+				System.out.println("Would you like to continue to use the password manager? (Y/N)");
+				char repeat = scan.next().toUpperCase().charAt(0);
+				if (repeat = 'N') {
+					again = false;
+				}
+				
+				break;
+				
+				
 			case "Update":
 			
 				System.out.println("Enter your master key");
@@ -124,7 +178,7 @@ public class Driver {
 					String updatedPass = scan.nextLine();
 					
 					System.out.println("Enter your master key again");
-					if(@@@@@@@@@.updatePassword(scan.nextLine(), account, updatedPass) {
+					if(@@@@@@@@@.updatePassword(scan.nextLine(), account, updatedPass)) {
 						System.out.println("Account: " + account + " password was sucessfully updated");
 					} else {
 						System.out.println("Account: " + account + " not found");
