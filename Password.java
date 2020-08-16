@@ -102,7 +102,7 @@ public class Password {
 						charAdded = true;
 					}
 					else if(randNum == 2 && symbolsCount < 2 && symbols == true) {
-						generatedPass += randomCharacter(" !\"#$%");
+						generatedPass += randomCharacter(" !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
 						
 						lettersCount = 0;
 						numbersCount = 0;
