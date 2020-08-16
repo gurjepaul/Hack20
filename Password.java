@@ -134,10 +134,62 @@ public class Password {
 		
 		/*
 		 * Strength checker for password
+		 * First checks that the characters are not all of 1 character type
+		 * Then check to ensure the length isn't 0 which would be invalid
+		 * Then we do a calculation which is 1 + 0.5 * the amount of different character types
+		 * then we take that and multipy it by the length squared and after that divide everything by repeated characters squared
 		 */
 		public void CheckStrength() {
 			double strValue = 0.0;
 			//calculate strValue
+			if(CheckAllLower() || CheckAllUpper() || CheckAllNumbers() || CheckSymbols()) {
+				//if the password is all one character type then it is weak so we should give it a value of 0
+				this.strength = strValue;
+				return;
+			}
+			
+			//gather the characteristics of the password
+			double num = 0;
+			double upper = 0;
+			double lower = 0;
+			double symb = 0;
+			//if it contains a number increase the number multiplier
+			if(ContainsNumber()) {
+				num = 0.5;	
+			}
+			
+			//if it contains an upper case increase the multiplier
+			if(ContainsUpper()) {
+				upper = 0.5;
+			}
+			
+			//if it contains an lower case increase the multiplier
+			if(ContainsLower()) {
+				lower = 0.5;
+			}
+			
+			//if it contains an special character increase the multiplier
+			if(ContainsSpecial()) {
+				symb = 0.5;
+			}
+
+			int repeated = CheckRepeatedCharacters();
+			if(repeated == 0) {
+				//so we don't accidentally divide by zero
+				repeated = 1;
+			}
+			
+			int length = pass.length();
+			
+			if(length ==  0) {
+				//password needs a length of longer than 1 otherwise it is given a strength of 0
+				this.strength = strValue;
+				return;
+			}
+			
+			//calculate the strength here
+			strValue = ((1 + num + lower + upper + symb) * (length * length))/(repeated * repeated);
+			
 			this.strength = strValue;
 		}
 		
