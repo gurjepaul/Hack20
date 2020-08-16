@@ -33,7 +33,7 @@ public class PasswordManager
         return md.digest(input.getBytes(StandardCharsets.UTF_8));
 	}
 	
-	private String toHexString(byte[] hash)
+	public String toHexString(byte[] hash)
 	{
 		// Convert byte array into signum representation  
         BigInteger number = new BigInteger(1, hash);  
@@ -123,7 +123,7 @@ public class PasswordManager
 		
 		for (String accountName : this.container.keySet())
 		{
-			accounts.append(String.format("%-12s-> *******\n", accountName));
+			accounts.append(String.format("%-12s: *******\n", accountName));
 		}
 		
 		return accounts.toString();

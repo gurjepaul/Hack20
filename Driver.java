@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Driver {
 
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -57,17 +58,20 @@ public class Driver {
 				//Case where the user wants to have a generated password with certain characteristics
 				else if(pass.equalsIgnoreCase("Generate"))
 				{
-					System.out.println("Do you want your password to contain Upper/Lower case letters, numbers, and/or symbols?");
-					System.out.println("Type Y for each character you want, and N to not include the character ");
-					System.out.println("(Upper/Lower case letters, Numbers, Symbols) ");
 					
-					//Prompts the user to determine what they want in their password
+					System.out.println();
+					System.out.println("You must choose at least 2 options for your password");
+					
+					System.out.println("Do you want your password to contain Upper/Lower case letters? (Y/N)");
 					String upperLower = scan.nextLine();
-					System.out.println();
+					
+					System.out.println("Do you want your password to contain numbers? (Y/N)");
 					String number = scan.nextLine();
-					System.out.println();
+					
+					System.out.println("Do you want your password to contain symbols? (Y/N)");
 					String symbol = scan.nextLine();
-					System.out.println();
+					
+					
 					
 					//Boolean variables to help store whether or not the user wants this type of character in their password
 					boolean upLow = false;
@@ -89,7 +93,6 @@ public class Driver {
 					
 					System.out.println("How long do you want your password to be? (Between 1 & 99)");
 					int length = scan.nextInt();
-					System.out.println();
 					
 					//Creates a new password with the characters the user chose
 					Password password = new Password(upLow, num, sym, length);
@@ -98,7 +101,8 @@ public class Driver {
 					
 					//Return the strength
 					System.out.println("Strength of password '" + password.getPassword() + "' is " + strength);
-					
+					System.out.println("------------------------------------");
+					System.out.println();
 					
 				}
 				
@@ -108,6 +112,8 @@ public class Driver {
 			//Case where the user wants to update a password
 			case "Update":
 			
+				System.out.println("Enter your master key");
+				
 				//Here we can go directly to our password manager where we ask for the master key
 				//Once we access the passwords, the user chooses an account to change the password
 				//returns whether the password is strong, weak ,or okay
@@ -146,7 +152,7 @@ public class Driver {
 				
 				System.out.println("Exiting the password manager...");
 			
-			//'again' turns to false meaning we are done with the password generator	
+				//'again' turns to false meaning we are done with the password generator	
 				again = false;
 				
 				break;
@@ -164,6 +170,5 @@ public class Driver {
 		scan.close();
 		
 	}
-
 	
 }

@@ -5,8 +5,8 @@ public class Password {
 		
 		public static void main(String[] args) {
 			System.out.println("hello world");
-			Password wtf = new Password("helllloo24");
-			System.out.println(wtf.CheckRepeatedCharacters());
+			Password wtf = new Password(true, false, false, 10);
+			System.out.println(wtf.getPassword());
 		}
 		
 		
@@ -34,7 +34,7 @@ public class Password {
 		 * constructor where user passes in value
 		 */
 		public Password(String pass) {
-			this.setPassword(pass);
+			this.pass = pass;
 			
 			CheckStrength();
 		}
@@ -60,6 +60,7 @@ public class Password {
 		public boolean setPassword(String pass) {
 			this.pass = pass;
 			//call strength checker again to reset the strength value
+			CheckStrength();
 			return true;
 		}
 		
