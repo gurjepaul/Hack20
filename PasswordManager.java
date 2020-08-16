@@ -135,31 +135,31 @@ public class PasswordManager
 	 */
 	public static void main(String[] args) throws NoSuchAlgorithmException
 	{
-		PasswordManager pm = new PasswordManager("Jay");
-		
-		System.out.println(pm.isMasterKey("Jay"));
-		System.out.println(pm.isMasterKey("Saahil"));
-		System.out.println(pm.isMasterKey("Jay"));
-		
-		System.out.println(pm.addPassword("Jay", "Google", "123456"));
-		System.out.println(pm.addPassword("Jay", "Google", "jay"));
-		
-		System.out.println(pm.updatePassword("Jay", "Google", "jay"));
-		
-		System.out.println(pm.updatePassword("Jay", "Spotify", "jay"));
-		
-		System.out.println(pm.addPassword("Jay", "Microsoft", "566969"));
-		System.out.println(pm.addPassword("Jay", "Apple", "Password"));
-		System.out.println(pm.addPassword("Jay", "Steam", "Password"));
-		
-		System.out.println(pm.removePassword("Spotify"));
-		System.out.println(pm.removePassword("Google"));
-		
-		System.out.println(pm.retrievePassword("Jay", "Google"));
-		System.out.println(pm.retrievePassword("Jay", "Microsoft"));
-		System.out.println(pm.retrievePassword("Jay", "Apple"));
-		
-		System.out.println(pm.toString());
+//		PasswordManager pm = new PasswordManager("Jay");
+//		
+//		System.out.println(pm.isMasterKey("Jay"));
+//		System.out.println(pm.isMasterKey("Saahil"));
+//		System.out.println(pm.isMasterKey("Jay"));
+//		
+//		System.out.println(pm.addPassword("Jay", "Google", "123456"));
+//		System.out.println(pm.addPassword("Jay", "Google", "jay"));
+//		
+//		System.out.println(pm.updatePassword("Jay", "Google", "jay"));
+//		
+//		System.out.println(pm.updatePassword("Jay", "Spotify", "jay"));
+//		
+//		System.out.println(pm.addPassword("Jay", "Microsoft", "566969"));
+//		System.out.println(pm.addPassword("Jay", "Apple", "Password"));
+//		System.out.println(pm.addPassword("Jay", "Steam", "Password"));
+//		
+//		System.out.println(pm.removePassword("Spotify"));
+//		System.out.println(pm.removePassword("Google"));
+//		
+//		System.out.println(pm.retrievePassword("Jay", "Google"));
+//		System.out.println(pm.retrievePassword("Jay", "Microsoft"));
+//		System.out.println(pm.retrievePassword("Jay", "Apple"));
+//		
+//		System.out.println(pm.toString());
 	}
 
 }
