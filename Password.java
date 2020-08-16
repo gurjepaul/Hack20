@@ -16,7 +16,7 @@ public class Password {
 		 * no argument constructor
 		 */
 		public Password() {
-			System.out.println(generateStrongPassword());
+			this.pass = generateStrongPassword();
 		}
 	
 		
@@ -265,6 +265,22 @@ public class Password {
 		private boolean ContainsUpper() {
 			String copyPass = this.pass;
 			return !copyPass.equals(copyPass.toLowerCase());
+		}
+		
+		/*
+		 * returns true if password contains a special character
+		 */
+		private boolean ContainsSpecial() {
+			String copyPass = this.pass;
+			return !copyPass.matches("[A-Za-z0-9]*");
+		}
+		
+		/*
+		 * returns true if password contains numbers
+		 */
+		private boolean ContainsNumber() {
+			String copyPass = this.pass;
+			return !copyPass.matches(".*\\d.*");
 		}
 		
 		private void CheckWords() {
