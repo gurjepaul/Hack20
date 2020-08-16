@@ -9,18 +9,18 @@ public class Driver {
 		
 		boolean again = true;	//Boolean variable that will be true if the user wants to do something else
 
+		Scanner scan = new Scanner(System.in);
 		
 		while(again == true)
 		{
 			
-		System.out.println("Type 'Create' for a new password, type 'Update' to update a password ");
-		System.out.print("type 'Delete' to delete a password, type 'Retrieve' to get a password, or type 'Exit' ");
-		System.out.println();
+		System.out.println("-Type 'Create' for a new password, \n-Type 'Update' to update a password");
+		System.out.println("-Type 'Delete' to delete a password, \n-Type 'Retrieve' to get a password, or type 'Exit' ");
 		
-		
-		Scanner scan = new Scanner(System.in);
 		
 		String word = scan.nextLine();
+		System.out.println();
+		System.out.println("------------------------------------");
 
 			//Determine what the user wants to do with the program
 			switch(word)
@@ -30,16 +30,17 @@ public class Driver {
 				
 				System.out.println("Enter 'New' to type your own password, or 'Generate' for a randomly generated password ");
 				
-				Scanner scanner = new Scanner(System.in);
 				
-				String pass = scanner.nextLine();
+				String pass = scan.nextLine();
+				System.out.println();
 				
 				//Case where the user wants to type their own password
 				if(pass.equalsIgnoreCase("New"))
 				{
 					System.out.println("Type your password");
 					
-					String theP = scanner.nextLine();
+					String theP = scan.nextLine();
+					System.out.println();
 					
 					//Create a new password with the one the user chose
 					Password password = new Password(theP);
@@ -48,20 +49,25 @@ public class Driver {
 					
 					//Return the strength of the password
 					System.out.println("Strength of password '" + password.getPassword() + "' is " + strength);
+					System.out.println("------------------------------------");
+					System.out.println();
 					
 					
 				}
 				//Case where the user wants to have a generated password with certain characteristics
 				else if(pass.equalsIgnoreCase("Generate"))
 				{
-					System.out.println("Do you want your password to contain Upper/Lower case letters, numbers, and/or symbols ");
+					System.out.println("Do you want your password to contain Upper/Lower case letters, numbers, and/or symbols?");
 					System.out.println("Type Y for each character you want, and N to not include the character ");
-					System.out.print("(Upper/Lower case letters, Numbers, Symbols) ");
+					System.out.println("(Upper/Lower case letters, Numbers, Symbols) ");
 					
 					//Prompts the user to determine what they want in their password
-					String upperLower = scanner.next();
-					String number = scanner.next();
-					String symbol = scanner.next();
+					String upperLower = scan.nextLine();
+					System.out.println();
+					String number = scan.nextLine();
+					System.out.println();
+					String symbol = scan.nextLine();
+					System.out.println();
 					
 					//Boolean variables to help store whether or not the user wants this type of character in their password
 					boolean upLow = false;
@@ -82,7 +88,8 @@ public class Driver {
 					}
 					
 					System.out.println("How long do you want your password to be? (Between 1 & 99)");
-					int length = scanner.nextInt();
+					int length = scan.nextInt();
+					System.out.println();
 					
 					//Creates a new password with the characters the user chose
 					Password password = new Password(upLow, num, sym, length);
@@ -95,8 +102,6 @@ public class Driver {
 					
 				}
 				
-				scanner.close();
-				scan.close();
 				
 				break;
 		
@@ -139,8 +144,6 @@ public class Driver {
 			//User wants to exit the program
 			case "Exit":
 				
-				scan.close();
-				
 				System.out.println("Exiting the password manager...");
 			
 			//'again' turns to false meaning we are done with the password generator	
@@ -155,9 +158,10 @@ public class Driver {
 				//boolean 'again' stays as true
 			}
 		
-			scan.close();
+			
 		}
 		
+		scan.close();
 		
 	}
 
