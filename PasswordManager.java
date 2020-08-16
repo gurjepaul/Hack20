@@ -7,10 +7,7 @@ import java.util.HashMap;
 /**
  * This class contains the implementation for the password manager
  */
-/**
- * @author Gurjepaul
- *
- */
+
 public class PasswordManager
 {
 	private final String masterKey;

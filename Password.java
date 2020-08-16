@@ -4,9 +4,9 @@ public class Password {
 		
 		
 		public static void main(String[] args) {
-			System.out.println("hello world");
-			Password wtf = new Password(true, false, false, 10);
-			System.out.println(wtf.getPassword());
+			//System.out.println("hello world");
+			//Password wtf = new Password(true, false, false, 10);
+			//System.out.println(wtf.getPassword());
 		}
 		
 		
