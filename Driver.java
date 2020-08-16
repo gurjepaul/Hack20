@@ -54,25 +54,20 @@ public class Driver {
 				{
 					System.out.println("Do you want your password to contain Upper/Lower case letters, numbers, and/or symbols ");
 					System.out.println("Type Y for each option you want, and N to not include the option ");
-					System.out.print("(Upper Case letters, Lower Case letters, Numbers, Symbols) ");
+					System.out.print("(Upper/Lower case letters, Numbers, Symbols) ");
 					
-					String upper = scanner.next();
-					String lower = scanner.next();
+					String upperLower = scanner.next();
 					String number = scanner.next();
 					String symbol = scanner.next();
 					
-					boolean up = false;
-					boolean low = false;
+					
+					boolean upLow = false;
 					boolean num = false;
 					boolean sym = false;
 					
-					if(upper == "Y")
+					if(upperLower == "Y")
 					{
-						up = true;
-					}
-					if(lower == "Y")
-					{
-						low = true;
+						upLow = true;
 					}
 					if(number == "Y")
 					{
@@ -83,7 +78,8 @@ public class Driver {
 						sym = true;
 					}
 					
-					Password password = new Password(up, low, num, sym);
+					
+					Password password = new Password();
 					
 					//Ask and show the user if they are okay with their password, if yes then set the boolean to false
 					//otherwise loop again and keep again as true

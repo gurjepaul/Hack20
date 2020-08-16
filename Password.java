@@ -15,13 +15,16 @@ public class Password {
 		/*
 		 * no argument constructor
 		 */
-		
 		public Password() {
-			
+			System.out.println(generateStrongPassword());
 		}
+	
 		
-		public Password(boolean up, boolean low, boolean num, boolean sym) {
+		public Password(boolean letters, boolean num, boolean sym, int length) {
 			//call generatePassword();
+			
+			
+			
 			//check the strength of password
 		}
 		
@@ -31,7 +34,8 @@ public class Password {
 		public Password(String pass) {
 			//check strength of password
 		}
-		
+
+
 		/*
 		 * getter for password
 		 */
