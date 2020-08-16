@@ -2,9 +2,24 @@ public class Password {
 		private String pass;
 		private double strength;
 		
+		
+		public static void main(String[] args) {
+			Password pw = new Password();
+			for(int i = 0; i < 10; i++) {
+				System.out.println(pw.generateStrongPassword());
+			}
+		}
+		
+		
+		
 		/*
 		 * no argument constructor
 		 */
+		
+		public Password() {
+			
+		}
+		
 		public Password(boolean up, boolean low, boolean num, boolean sym) {
 			//call generatePassword();
 			//check the strength of password
@@ -43,23 +58,52 @@ public class Password {
 		/*
 		 * Password generator
 		 */
-		public String GeneratePassword(boolean letters, boolean upper, boolean lower, boolean numbers, boolean symbols, int length) {
-			//generate password based on specifications of user
-			String generatedPass = "";
-			
-			//do the generating thing
-			
-			for(int i = 0; i < length - 2; i++) {
-			generatedPass = generatedPass + randomCharacter("abcdefghijklmnopqrstuvwxyz");
+		
+		public String generatePassword(boolean letters, boolean numbers, boolean symbols, int length) {
+			if(letters == false && numbers == false && symbols == false || length < 1) {
+				throw new IllegalArgumentException("Invalid Argument");
 			}
 			
+			String generatedPass = "";
+			int lettersCount = 0;
+			int numbersCount = 0;
+			int symbolsCount = 0;
 			
-			String randomDigit = randomCharacter("0123456789");
-			generatedPass = insertAtRandom(generatedPass, randomDigit);
-			
-			String randomSymbs = randomCharacter("+-*/?!@#$%^&()");
-			generatedPass = insertAtRandom(generatedPass, randomSymbs);
-			
+			boolean charAdded = false;
+			for(int i = 0; i < length; i++) {
+				charAdded = false;
+				while(!charAdded) {
+					int randNum = (int) (Math.random()*4);
+					
+					if(randNum == 0 && lettersCount < 2 && letters == true) {
+						generatedPass += randomCharacter("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+						
+						lettersCount++;
+						numbersCount = 0;
+						symbolsCount = 0;
+						
+						charAdded = true;
+					}
+					else if(randNum == 1 && numbersCount < 2 && numbers == true) {
+						generatedPass += randomCharacter("0123456789");
+						
+						lettersCount = 0;
+						numbersCount++;
+						symbolsCount = 0;
+						
+						charAdded = true;
+					}
+					else if(randNum == 2 && symbolsCount < 2 && symbols == true) {
+						generatedPass += randomCharacter("+-*/?!@#$%^&()");
+						
+						lettersCount = 0;
+						numbersCount = 0;
+						symbolsCount++;
+						
+						charAdded = true;
+					}
+				}
+			}
 			return generatedPass;
 		}
 		
@@ -69,11 +113,14 @@ public class Password {
 			return characters.substring(r, r + 1);
 		}
 		
-		public String insertAtRandom(String str, String toInsert) {
-			int n = str.length();
-			int r = (int) ((n + 1) * Math.random());
-			return str.substring(0,r) + toInsert + str.substring(r);
+		public String generateStrongPassword() {
+			int randNum = getRandomInteger(16, 13);
+			return generatePassword(true, true, true, randNum);
 		}
+		
+		public static int getRandomInteger(int maximum, int minimum){
+	        return ((int) (Math.random()*(maximum - minimum))) + minimum;
+	    }
 		
 		/*
 		 * Strength checker for password
