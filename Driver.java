@@ -81,8 +81,11 @@ public class Driver {
 						sym = true;
 					}
 					
+					System.out.println("How long do you want your password to be? (Between 1 & 99)");
+					int length = scanner.nextInt();
+					
 					//Creates a new password with the characters the user chose
-					Password password = new Password(upLow, num, sym);
+					Password password = new Password(upLow, num, sym, length);
 					
 					double strength = password.getStrength();
 					
@@ -93,7 +96,7 @@ public class Driver {
 				}
 				
 				scanner.close();
-				
+				scan.close();
 				
 				break;
 		
