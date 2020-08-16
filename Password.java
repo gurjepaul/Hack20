@@ -4,10 +4,9 @@ public class Password {
 		
 		
 		public static void main(String[] args) {
-			Password pw = new Password();
-			for(int i = 0; i < 10; i++) {
-				System.out.println(pw.generateStrongPassword());
-			}
+			System.out.println("hello world");
+			Password wtf = new Password("hahAa1js#");
+			System.out.println(wtf.getStrength());
 		}
 		
 		
@@ -35,10 +34,11 @@ public class Password {
 		 * constructor where user passes in value
 		 */
 		public Password(String pass) {
-			
+			System.out.println("in here");
 			setPassword(pass);
-			
+			System.out.println("next");
 			CheckStrength();
+			System.out.println("out");
 		}
 
 
@@ -104,7 +104,7 @@ public class Password {
 						charAdded = true;
 					}
 					else if(randNum == 2 && symbolsCount < 2 && symbols == true) {
-						generatedPass += randomCharacter("+-*/?!@#$%^&()");
+						generatedPass += randomCharacter(" !\"#$%");
 						
 						lettersCount = 0;
 						numbersCount = 0;
@@ -293,6 +293,7 @@ public class Password {
 						//increment j
 						j++;
 					}
+					break;
 				}
 				
 				//After we finish up with the while loop to figure out how many repeated characters there are
@@ -341,15 +342,4 @@ public class Password {
 			return !copyPass.matches(".*\\d.*");
 		}
 		
-		private void CheckWords() {
-			
-		}
-		
-		private void CheckNames() {
-			
-		}
-		
-		private void CheckAscendingNumbers() {
-			
-		}
 }
