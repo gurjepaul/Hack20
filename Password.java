@@ -5,7 +5,7 @@ public class Password {
 		
 		public static void main(String[] args) {
 			System.out.println("hello world");
-			Password wtf = new Password("hahAa1js#");
+			Password wtf = new Password("hI");
 			System.out.println(wtf.getStrength());
 		}
 		
@@ -337,7 +337,7 @@ public class Password {
 		 */
 		private boolean ContainsNumber() {
 			String copyPass = this.pass;
-			return !copyPass.matches(".*\\d.*");
+			return copyPass.matches(".*\\d.*");
 		}
 		
 }
