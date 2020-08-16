@@ -22,7 +22,7 @@ public class Driver {
 		
 		String word = scan.nextLine();
 
-			
+			//Determine what the user wants to do with the program
 			switch(word)
 			{
 			//Case where the user wants to create a password
@@ -35,7 +35,7 @@ public class Driver {
 				String pass = scanner.nextLine();
 				
 				//Case where the user wants to type their own password
-				if(pass.equals("New"))
+				if(pass.equalsIgnoreCase("New"))
 				{
 					System.out.println("Type your password");
 					
@@ -44,57 +44,56 @@ public class Driver {
 					//Create a new password with the one the user chose
 					Password password = new Password(theP);
 					
-					//Ask and show the user if they are okay with their password, if yes then set the boolean to false
-					//otherwise loop again and keep again as true
-					again = false;
+					double strength = password.getStrength();
+					
+					//Return the strength of the password
+					System.out.println("Strength of password '" + password.getPassword() + "' is " + strength);
+					
 					
 				}
 				//Case where the user wants to have a generated password with certain characteristics
-				else if(pass.equals("Generate"))
+				else if(pass.equalsIgnoreCase("Generate"))
 				{
 					System.out.println("Do you want your password to contain Upper/Lower case letters, numbers, and/or symbols ");
-					System.out.println("Type Y for each option you want, and N to not include the option ");
+					System.out.println("Type Y for each character you want, and N to not include the character ");
 					System.out.print("(Upper/Lower case letters, Numbers, Symbols) ");
 					
+					//Prompts the user to determine what they want in their password
 					String upperLower = scanner.next();
 					String number = scanner.next();
 					String symbol = scanner.next();
 					
-					
+					//Boolean variables to help store whether or not the user wants this type of character in their password
 					boolean upLow = false;
 					boolean num = false;
 					boolean sym = false;
 					
-					if(upperLower == "Y")
+					if(upperLower.equalsIgnoreCase("Y"))
 					{
 						upLow = true;
 					}
-					if(number == "Y")
+					if(number.equalsIgnoreCase("Y"))
 					{
 						num = true;
 					}
-					if(symbol == "Y")
+					if(symbol.equalsIgnoreCase("Y"))
 					{
 						sym = true;
 					}
 					
+					//Creates a new password with the characters the user chose
+					Password password = new Password(upLow, num, sym);
 					
-					Password password = new Password();
+					double strength = password.getStrength();
 					
-					//Ask and show the user if they are okay with their password, if yes then set the boolean to false
-					//otherwise loop again and keep again as true
-					again = false;
+					//Return the strength
+					System.out.println("Strength of password '" + password.getPassword() + "' is " + strength);
+					
 					
 				}
 				
 				scanner.close();
-				//Ask the user if they want to input their own password or if they want a generated one
-				//return the password to the user and see if they are content
-				//if so, ask for account details and open the password manager
-				//ask for the master key to enter which will then add the password to the hash map
-			 
-				//ask the user if they want to do something else
-				//if not then set 'again' to false
+				
 				
 				break;
 		
@@ -140,8 +139,10 @@ public class Driver {
 				scan.close();
 				
 				System.out.println("Exiting the password manager...");
-				System.exit(0);
 			
+			//'again' turns to false meaning we are done with the password generator	
+				again = false;
+				
 				break;
 				
 			default:

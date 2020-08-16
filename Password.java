@@ -19,7 +19,19 @@ public class Password {
 			this.pass = generateStrongPassword();
 		}
 	
+		/*
+		 * Constructor where user passes the types of characters they want in their password
+		 */
+		public Password(boolean letters, boolean num, boolean sym) {
+			//call generatePassword
+			
+			
+			//check password strength
+		}
 		
+		/*
+		 * Constructor where user passes the types of characters they want in their password (Includes length)
+		 */
 		public Password(boolean letters, boolean num, boolean sym, int length) {
 			//call generatePassword();
 			
