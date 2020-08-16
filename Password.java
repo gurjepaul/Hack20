@@ -5,8 +5,8 @@ public class Password {
 		
 		public static void main(String[] args) {
 			System.out.println("hello world");
-			Password wtf = new Password("hello24");
-			System.out.println(wtf.getStrength());
+			Password wtf = new Password("helllloo24");
+			System.out.println(wtf.CheckRepeatedCharacters());
 		}
 		
 		
@@ -185,6 +185,7 @@ public class Password {
 				return;
 			}
 			
+			
 			//calculate the strength here
 			strValue = ((1 + num + lower + upper + symb) * (length * length))/(repeated * repeated);
 			
@@ -313,7 +314,7 @@ public class Password {
 				}
 				//we go back up and iterate here
 			}
-			return 0;
+			return maxRepeated;
 		}
 		
 		/*
